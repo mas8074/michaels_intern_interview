@@ -8,13 +8,12 @@ const lockState = window.mobx.observable({
 })
 
 function changeDialValue (index, incrementBy) {
-
-  if ( lockState.wheels[index] >= 5 && incrementBy == 1 ){
-    lockState.wheels[index] = 0;
-  } else if ( lockState.wheels[index] <= 0 && incrementBy == -1 ){
-    lockState.wheels[index] = 5;
+  if (lockState.wheels[index] >= 5 && incrementBy == 1) {
+    lockState.wheels[index] = 0
+  } else if (lockState.wheels[index] <= 0 && incrementBy == -1) {
+    lockState.wheels[index] = 5
   } else {
-    lockState.wheels[index] += incrementBy;
+    lockState.wheels[index] += incrementBy
   }
 
   // This part is missing some code
@@ -25,15 +24,14 @@ function changeDialValue (index, incrementBy) {
   // for example, if the user clicked the "down" arrow for the last wheel
   // this will be called with arguments (3, -1).
 
-
-
-  if (lockState.wheels[0] == 1 && lockState.wheels[1] == 3 && lockState.wheels[2] == 5 && lockState.wheels[3] == 1){
-    lockState.locked = false;
+  if (lockState.wheels[0] == SECRET_COMBO[0]
+    && lockState.wheels[1] == SECRET_COMBO[1]
+    && lockState.wheels[2] == SECRET_COMBO[2]
+    && lockState.wheels[3] == SECRET_COMBO[3]) {
+    lockState.locked = false
   }
 
-
-  redirect('michael-samodurov');
-
+  redirect('michael-samodurov')
 
   // to change the state of the lock, simply make a call like
   // lockState.locked = false
